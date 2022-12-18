@@ -1,4 +1,5 @@
-import HomePage from "./homePage.comoponent";
+import HomePage from "./pages/homepage/homePage.comoponent";
+import './App.css'
 
 function App() {
   return (
@@ -9,3 +10,4 @@ function App() {
 }
 
 export default App;
+ 
