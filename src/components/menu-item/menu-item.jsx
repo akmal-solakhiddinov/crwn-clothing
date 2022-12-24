@@ -1,4 +1,6 @@
 import React from "react";
+// import {useNavigate} from 'react-router-dom';
+
 import "./menu-item.scss";
 
 const MenuItem = ({ title, imageUrl, size }) => (
@@ -14,4 +16,6 @@ const MenuItem = ({ title, imageUrl, size }) => (
   </div>
 );
 
-export default MenuItem;
+export default (MenuItem);
+
+
