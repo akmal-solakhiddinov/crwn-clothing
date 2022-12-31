@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "../src/pages/homepage/homePage.comoponent";
-import { Route, Routes, /* redirect, */ Navigate } from "react-router-dom";
+import { Route, Routes, redirect } from "react-router-dom";
 import ShopPage from "../src/pages/shop/shop";
 import Header from "../src/components/header/header";
 import SignInAndSignUpPage from "../src/pages/sign-in-AND-up-PAGES/sign-in_and_up-page";
@@ -51,7 +51,7 @@ class App extends React.Component {
             exact
             render={() =>
               this.props.currentUser ? (
-                <Navigate to="/" />
+                <redirect to="/" />
               ) : (
                 <SignInAndSignUpPage />
               )
