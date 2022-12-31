@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "../src/pages/homepage/homePage.comoponent";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, /* redirect, */ Navigate } from "react-router-dom";
 import ShopPage from "../src/pages/shop/shop";
 import Header from "../src/components/header/header";
 import SignInAndSignUpPage from "../src/pages/sign-in-AND-up-PAGES/sign-in_and_up-page";
@@ -47,15 +47,28 @@ class App extends React.Component {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
           {/* <Route path="/contact" element={<ContactPage />} />b */}
-          <Route path="/signIn" element={<SignInAndSignUpPage />} />
+          <Route
+            exact
+            render={() =>
+              this.props.currentUser ? (
+                <Navigate to="/" />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
         </Routes>
       </div>
     );
   }
 }
 
+const mapSateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = (displatch) => ({
   setCurrentUser: (user) => displatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapSateToProps, mapDispatchToProps)(App);
